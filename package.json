@@ -1,0 +1,25 @@
+{
+  "name": "turborepo-firebase",
+  "version": "0.1.0",
+  "private": true,
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "dev:core": "turbo run dev --scope='core'",
+    "dev:api": "turbo run dev --scope='api'",
+    "dev:web": "turbo run dev --scope='web'",
+    "build": "turbo run build",
+    "emulators": "turbo build --scope='api' & firebase emulators:start",
+    "deploy:api": "turbo build --scope='api' & firebase deploy --only functions"
+  },
+  "devDependencies": {
+    "firebase-tools": "^11.18.0",
+    "turbo": "^1.6.3"
+  },
+  "engines": {
+    "npm": ">=7.0.0",
+    "node": ">=16.0.0"
+  }
+}

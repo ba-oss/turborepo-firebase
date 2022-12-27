@@ -1,0 +1,30 @@
+{
+  "name": "api",
+  "scripts": {
+    "dev": "vite build --watch",
+    "build": "vite build",
+    "deploy": "yarn build; firebase deploy --only functions",
+    "emulators": "firebase emulators:start"
+  },
+  "engines": {
+    "node": "16"
+  },
+  "files": [
+    "build"
+  ],
+  "main": "./build/index.umd.js",
+  "module": "./build/index.js",
+  "exports": {
+    ".": {
+      "import": "./build/index.js",
+      "require": "./build/index.umd.js"
+    }
+  },
+  "dependencies": {
+    "express": "^4.17.3",
+    "firebase-admin": "^10.1.0",
+    "firebase-functions": "^3.20.1",
+    "vite": "^4.0.3"
+  },
+  "private": true
+}

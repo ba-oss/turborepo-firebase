@@ -1,0 +1,31 @@
+{
+  "$schema": "https://turbo.build/schema.json",
+  "pipeline": {
+    "build": {
+      "dependsOn": ["^build"],
+      "outputs": ["build/**"]
+    },
+    "deploy": {
+      "dependsOn": ["^build"],
+      "outputs": []
+    },
+    "lint": {
+      "outputs": []
+    },
+    "dev": {
+      "cache": false
+    },
+    "api#dev": {
+      "dependsOn": ["@shared/core#build"],
+      "outputs": []
+    },
+    "web#dev": {
+      "dependsOn": ["@shared/core#build"],
+      "outputs": []
+    },
+    "api#build": {
+      "dependsOn": ["@shared/core#build"],
+      "outputs": []
+    }
+  }
+}
